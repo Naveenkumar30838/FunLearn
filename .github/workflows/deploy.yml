@@ -16,12 +16,17 @@ jobs:
 
       - name: Setup Node
         uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # Specify the Node.js version you need
 
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
 
       - name: Build project
         run: npm run build
+
+      - name: Verify build output
+        run: ls -la ./dist  # List contents of the dist directory
 
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v3
